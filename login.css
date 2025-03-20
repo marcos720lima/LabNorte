@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@500&display=swap');
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+    background-image: url('/grupo10/imagens/teladefundo.jpg');
+    background-size: cover; 
+    background-position: center; 
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 40px;
+    width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border: 2px solid #87CEEB;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border: 1px solid #3498db;
+}
+
+.button {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    background-color: #3498db;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #267bb8;
+}
+
+.header-container {
+    position: relative;
+    text-align: center;
+    margin-bottom: -20px;
+}
+
+.header-container h1 {
+    font-size: 28px;
+    color: #87CEEB;
+    font-weight: 700;
+    background-color: #fff; 
+    display: inline-block;
+    padding: 0 10px; 
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    border: 2px solid #87CEEB;
+}
