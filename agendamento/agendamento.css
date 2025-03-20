@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100%;
+    background-color: #f4f4f4;
+    background-image: url("/grupo10/imagens/teladefundo.jpg");
+    background-size: cover; 
+    background-position: center;
+}
+
+.navbar {
+    background-color: #3498db;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.nav__links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.nav__links li {
+    margin: 0 20px;
+}
+
+.nav__links li a {
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav__links li a:hover {
+    color: #000000;
+}
+
+.sair-btn {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.sair-btn:hover {
+    color: #ff6666;
+}
+
+.container {
+    max-width: 600px;
+    margin: 120px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #3498db;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.input-container {
+    width: 48%;
+}
+
+.input-container label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #3498db;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #3498db;
+    background-color: white;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    color: white;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0770c5;
+}
+
+.form-group-inline {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.form-group-inline .form-group {
+    width: 48%;
+}
+
+.form-group-inline label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.form-group-inline select, 
+.form-group-inline input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid rgb(53, 98, 180);
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-group-inline select:focus, 
+.form-group-inline input:focus {
+    border-color: #3498db;
+    background-color: white;
+}
+
+.input-container.text-area {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.input-container.text-area input {
+    height: 80px;
+    resize: none;
+}
+
+.form-group.tipo-consulta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.consulta-opcoes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.consulta-opcoes label {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+}
+
+.consulta-opcoes input {
+    margin-right: 8px;
+    width: auto;
+}
+
+.consulta-opcoes input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+input[type="number"] {
+    text-align: center;
+    font-size: 16px;
+}
