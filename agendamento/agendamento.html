@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento</title>
+    <link rel="stylesheet" href="agendamento.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">ClinicFlow</div> 
+        <nav>
+            <ul class="nav__links">
+                <li><a href="/grupo10/agendamento/agendamento.html">Agendamento</a></li>
+                <li><a href="/grupo10/pacientes/pacientes.html">Consultas Pendentes</a></li>
+                <li><a href="/grupo10/pacientes/historico.html">Histórico de Consultas</a></li>
+            </ul>
+        </nav>
+        <a href="/grupo10/index.html" class="sair-btn">Sair</a>
+    </header>
+
+    <div class="container">
+        <form action="agendamento.php" method="POST">            
+            <h2>Agendar Consulta</h2>              
+            <div class="form-group">
+                <div class="input-container">
+                    <label for="nome">Nome:</label>                
+                    <input type="text" id="nome" name="nome" required>          
+                </div>
+                <div class="input-container">
+                    <label for="cpf">CPF:</label>                
+                    <input type="text" id="cpf" name="cpf" required>            
+                </div>
+            </div>            
+            <div class="form-group">
+                <div class="input-container">
+                    <label for="telefone">Telefone:</label>                
+                    <input type="text" id="telefone" name="telefone" required>            
+                </div>
+                <div class="input-container">
+                    <label for="email">Email:</label>                
+                    <input type="email" id="email" name="email">
+                </div>
+            </div>           
+            <div class="form-group">
+                <div class="input-container">
+                    <label for="data_consulta">Data da Consulta:</label>                
+                    <input type="date" id="data_consulta" name="data_consulta" required>           
+                </div> 
+                <div class="input-container">
+                    <label for="hora_consulta">Horário:</label>                
+                    <input type="time" id="hora_consulta" name="hora_consulta" required>           
+                </div>
+            </div>
+
+            <div class="form-group tipo-consulta">
+                <label>Procedimento:</label>
+                <div class="consulta-opcoes">
+                    <label for="consulta1">
+                        <input type="checkbox" id="consulta1" name="consultas[]" value="Consulta" /> 
+                        Consulta (R$ 250,00)
+                    </label>
+                    <label for="consulta2">
+                        <input type="checkbox" id="consulta2" name="consultas[]" value="Risco Cirúrgico" /> 
+                        Risco Cirúrgico (R$ 250,00)
+                    </label>
+                    <label for="consulta3">
+                        <input type="checkbox" id="consulta3" name="consultas[]" value="Eletrocardiograma" /> 
+                        Eletrocardiograma (R$ 70,00)
+                    </label>
+                    <label for="consulta4">
+                        <input type="checkbox" id="consulta4" name="consultas[]" value="Mapa 24 Horas" /> 
+                        Mapa 24 Horas (R$ 150,00)
+                    </label>
+                    <label for="consulta5">
+                        <input type="checkbox" id="consulta5" name="consultas[]" value="Teste Ergométrico" /> 
+                        Teste Ergométrico (R$ 250,00)
+                    </label>
+                </div>
+            </div>            
+            <div class="form-group">
+                <label for="valor_consulta">Valor Total:</label>
+                <input type="number" id="valor_consulta" name="valor_consulta" readonly required>
+            </div>
+            
+            <div class="form-group">
+                <div class="input-container text-area">
+                    <label for="observacao">Observação:</label>
+                    <input type="text" id="observacao" name="observacao" required>
+                </div>
+            </div>
+            <button type="submit" class="button">Agendar</button>         
+        </form> 
+    </div>
+    
+
+    <script>
+        const precosConsultas = {
+            "Consulta": 250.00,
+            "Risco Cirúrgico": 250.00,
+            "Eletrocardiograma": 70.00,
+            "Mapa 24 Horas": 150.00,
+            "Teste Ergométrico": 250.00
+        };
+
+        function calcularValorTotal() {
+            let valorTotal = 0;
+            const checkboxes = document.querySelectorAll('input[name="consultas[]"]:checked');
+            checkboxes.forEach(checkbox => {
+                valorTotal += precosConsultas[checkbox.value];
+            });
+            document.getElementById('valor_consulta').value = valorTotal.toFixed(2);
+        }
+
+        document.querySelectorAll('input[name="consultas[]"]').forEach(checkbox => {
+            checkbox.addEventListener('change', calcularValorTotal);
+        });
+    </script>
+</body>
+</html>
