@@ -1,0 +1,194 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    background-color: #f2f2f2;
+    font-family: 'Poppins', sans-serif;
+    background-image: url("/grupo10/imagens/teladefundo.jpg");
+    background-size: cover; 
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+}
+
+
+.navbar {
+    background-color: #3498db;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+.nav__links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
+.nav__links li {
+    margin: 0 20px;
+}
+
+.nav__links li a {
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav__links li a:hover {
+    color: #000000;
+}
+
+.sair-btn {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.sair-btn:hover {
+    color: #ff6666;
+}
+
+
+.pacientes-container {
+    background-color: #fff;
+    margin: 100px auto 0; 
+    padding: 40px;
+    width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(18, 106, 236, 0.356);
+    text-align: center;
+}
+h1 {
+    color: #5b9fee;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+
+#search-bar {
+    padding: 12px;
+    width: 100%;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#search-bar:focus {
+    border-color: #267bb8;
+}
+
+#lista-pacientes {
+    list-style-type: none;
+    padding: 0;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+#lista-pacientes li {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    position: relative;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#lista-pacientes li:hover {
+    background-color: #c8e0f1;
+    border-color: #3498db;
+}
+
+.detalhes {
+    padding: 12px;
+    color: #555;
+    display: none;
+    text-align: left;
+    margin-top: 10px;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.filtros {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filtros button, .filtros input {
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 1px solid #3498db;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filtros button:hover, .filtros input:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+.status-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.realizado-btn, .cancelado-btn {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancelado-btn {
+    background-color: #e74c3c;
+}
+
+.realizado-btn:hover {
+    background-color: #27ae60;
+}
+
+.cancelado-btn:hover {
+    background-color: #c0392b;
+}

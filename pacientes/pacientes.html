@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas Pendentes</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Poppins:wght@500&display=swap">
+    <link rel="stylesheet" href="pacientes.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">ClinicFlow</div>
+        <nav>
+            <ul class="nav__links">
+                li><a href="/grupo10/agendamento/agendamento.html">Agendamento</a></li>
+                <li><a href="/grupo10/pacientes/pacientes.html">Consultas Pendentes</a></li>
+                <li><a href="/grupo10/pacientes/historico.html">Histórico de Consultas</a></li>
+            </ul>
+        </nav>
+        <a href="/grupo10/index.html" class="sair-btn">Sair</a>
+    </header>
+    <div class="pacientes-container">
+        <h1>Consultas Aguardando Atendimento</h1>
+        <div class="filtros">
+            <button id="filtrar-recente">Mais Recentes</button>
+            <button id="filtrar-alfabetico">A - Z</button>
+            <input type="month" id="filtrar-mes">
+        </div>
+        <input type="text" id="search-bar" placeholder="Buscar paciente por nome ou CPF...">
+        <ul id="lista-pacientes"></ul>
+    </div>
+    <script>
+        let pacientesData = [];
+
+        function fetchPacientes() {
+            fetch('pacientes.php')
+                .then(response => response.json())
+                .then(data => {
+                    pacientesData = data;
+
+                    const pacientesNaoRealizadas = data.filter(paciente => paciente.status_consulta === 'nao_realizada');
+                    displayPacientes(pacientesNaoRealizadas);
+                })
+                .catch(error => console.error('Erro ao carregar os dados dos pacientes:', error));
+        }
+
+        function displayPacientes(data) {
+            const lista = document.getElementById('lista-pacientes');
+            lista.innerHTML = '';
+
+            data.forEach((paciente) => {
+                const item = document.createElement('li');
+                item.innerHTML = `<span>${paciente.nome}</span>`;
+
+                const detalhes = document.createElement('div');
+                detalhes.className = 'detalhes';
+                detalhes.innerHTML = `
+                    <p>CPF: ${paciente.cpf}</p>
+                    <p>Email: ${paciente.email}</p>
+                    <p>Telefone: ${paciente.telefone}</p>
+                    <p>Data: ${paciente.data_consulta}</p>
+                    <p>Hora: ${paciente.hora_consulta}</p>
+                    <p>Consulta: ${paciente.consulta}</p>
+                    <p>Valor: ${paciente.valor_consulta}</p>
+                `;
+
+                const realizadoBtn = document.createElement('button');
+                realizadoBtn.className = 'realizado-btn';
+                realizadoBtn.innerText = 'Consulta Realizada';
+                realizadoBtn.addEventListener('click', () => updateConsulta(paciente.cpf, 'realizada'));
+
+                const canceladoBtn = document.createElement('button');
+                canceladoBtn.className = 'cancelado-btn';
+                canceladoBtn.innerText = 'Consulta Cancelada';
+                canceladoBtn.addEventListener('click', () => updateConsulta(paciente.cpf, 'cancelada'));
+
+                detalhes.appendChild(realizadoBtn);
+                detalhes.appendChild(canceladoBtn);
+
+                item.appendChild(detalhes);
+
+                item.addEventListener('click', () => {
+                    detalhes.style.display = detalhes.style.display === 'none' ? 'block' : 'none';
+                });
+
+                lista.appendChild(item);
+            });
+        }
+
+        function updateConsulta(cpf, status) {
+            fetch('pacientes.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `cpf=${cpf}&status=${status}`,
+            })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.status === 'success') {
+                        alert(`Status atualizado para: ${status}`);
+                        fetchPacientes();  
+                    } else {
+                        console.error(result.message || 'Erro ao atualizar status.');
+                    }
+                })
+                .catch(error => console.error('Erro ao atualizar status:', error));
+        }
+
+        fetchPacientes();
+    </script>
+</body>
+</html>
